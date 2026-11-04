@@ -1,0 +1,5 @@
+import {plannerAccess} from "@/lib/planner-auth";
+import {chatGPTSignInPath} from "@/app/chatgpt-auth";
+import Planning from "./planning";
+export const dynamic="force-dynamic";
+export default async function Page(){const access=await plannerAccess();if(!access.allowed)return <main className="access-page"><a href="/" className="monogram">H & S</a><h1>Wedding planning</h1><p>{!access.configured?"Your private planning page is ready. The organiser’s sign-in email needs to be connected before responses can be viewed.":access.user?"This account does not have access to wedding responses. Please use an organiser’s account.":"Sign in with your approved organiser account to view the RSVPs."}</p>{!access.user&&<a className="primary-link" href={chatGPTSignInPath("/planning")} target="_top">Sign in with ChatGPT</a>}{access.user&&<a className="primary-link" href="/signout-with-chatgpt?return_to=%2Fplanning" target="_top">Use another account</a>}<p><a href="/">Back to the invitation</a></p></main>;return <Planning/>;}
