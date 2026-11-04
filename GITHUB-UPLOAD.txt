@@ -1,0 +1,9 @@
+Wedding invitation source files
+
+1. Extract this ZIP.
+2. Create a GitHub repository.
+3. Upload the extracted files and folders into the repository root, with package.json at the top level. Do not upload the ZIP itself.
+
+This is the existing Sites/Vinext project. Its server and RSVP database use Cloudflare Workers and D1. It is not yet configured for Vercel; the runtime and database integration need migration before deploying there.
+
+Local environment secrets, dependencies, build output, and local database records are excluded.
